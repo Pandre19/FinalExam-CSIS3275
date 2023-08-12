@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -31,5 +32,10 @@ public class ItemsRepository  {
 
         List<Items> itemsList = jdbc.query(sql, itemRowMapper);
         return itemsList;
+    }
+
+    public void createItem(int recno, String icode, double qty, Date dot) {
+        String sql = "INSERT INTO `sales`(`recno`, `icode`, `qty`, `dot`) VALUES ('?','?','?','?')";
+        jdbc.update(sql, recno, icode, qty, dot);
     }
 }

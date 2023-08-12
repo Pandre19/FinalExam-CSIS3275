@@ -21,36 +21,30 @@
 <body>
 
   <div class="col-md-6 offset-3">
-    <form method="post" th:action="@{save}">
-      <div>
-        <label>ID</label>
-        <input class="form-control" type="text" name="id" th:value="${student.id}">
-        <span th:errors="${student.id}"></span>
+    <form method="post" th:action="@{index}">
+      <div class="mb-3">
+        <label for="recno" class="form-label">Receipt No.:</label>
+        <input type="number" class="form-control" id="recno" name="recno" value="0">
       </div>
-      <div>
-        <label>Name</label>
-        <input class="form-control" type="text" name="name"
-               th:value="${student.name}">
-        <span th:errors="${student.name}"></span>
+      <div class="mb-3">
+        <label for="icode" class="form-label">Item Type:</label>
+        <select class="form-control" id="icode">
+          <option> select option</option>
+          <option th:each="p:${items}" th:value="${p.getIcode() + ' : ' + p.getIdesc()}"
+                  th:text="${p.getIcode() + ' : ' + p.getIdesc()}"></option>
+        </select>
       </div>
-      <div>
-        <label>Date of Birth</label>
-        <input class="form-control" type="date" name="dob"
-               th:value="${student.dob}">
-        <span th:errors="${student.dob}"></span>
+      <div class="mb-3">
+        <label for="qty" class="form-label">Quantity:</label>
+        <input type="number" class="form-control" id="qty" name="qty" value="0.0">
       </div>
-      <div>
-        <label>Passed</label>
-        <input type="checkbox" name="passed" th:checked="${student.passed}">
-        <span th:errors="${student.passed}"></span>
+      <div class="mb-3">
+        <label for="dot" class="form-label">Transaction Date:</label>
+        <input type="date" class="form-control" id="dot" name="dot">
       </div>
-      <div>
-        <label>GPA</label>
-        <input class="form-control" type="text" name="gpa"
-               th:value="${student.gpa}">
-        <span th:errors="${student.gpa}"></span>
+      <div class="mb-3">
+        <button type="submit" class="btn-primary" th:href="@{/items}">Save</button>
       </div>
-      <button type="submit" class="btn-primary" th:href="@{/index}" name="action" th:value="${action}">Save</button>
     </form>
   </div>
 

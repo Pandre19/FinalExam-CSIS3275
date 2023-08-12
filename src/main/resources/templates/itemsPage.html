@@ -26,9 +26,7 @@
             text-align: center;
         }
     </style>
-    <script>
-        document.getElementById('dot').valueAsDate = new Date();
-    </script>
+
 </head>
 <body>
 
@@ -65,7 +63,7 @@
 
     <div class="container bg-primary">
         <div class="card-body">
-            <form method="get" th:action="@{index}">
+            <form method="post" th:action="@{add}">
                 <div class="mb-3">
                     <label for="recno" class="form-label">Receipt No.:</label>
                     <input type="number" class="form-control" id="recno" name="recno" value="0">
@@ -73,8 +71,8 @@
                 <div class="mb-3">
                     <label for="icode" class="form-label">Item Type:</label>
                     <select class="form-control" id="icode">
-                        <option> select option</option>
-                        <option th:each="p:${items}" th:value="${p.getIcode() + ' : ' + p.getIdesc()}"
+                        <option value="option">select option</option>
+                        <option th:each="p:${items}" th:value="${p.getIcode()}"
                                 th:text="${p.getIcode() + ' : ' + p.getIdesc()}"></option>
                     </select>
                 </div>
@@ -89,11 +87,6 @@
                 <div class="mb-3">
                     <button type="submit" class="btn-primary" th:href="@{/items}">Save</button>
                 </div>
-
-                <!--                <label>Key Word</label>-->
-<!--                <input type="text" name="keyword">-->
-<!--                <button type="submit" class="btn-primary">Search</button>-->
-<!--                <button type="submit" class="btn-primary" name="seeAll" value="true">See All</button>-->
             </form>
         </div>
     </div>
@@ -106,26 +99,13 @@
             </tr>
             </thead>
             <tbody>
-            <!--        <tr th:each="p:${listStudents}">-->
-            <!--            <td th:text="${p.getId()}"></td>-->
-            <!--            <td th:text="${p.getName()}"></td>-->
-            <!--            <td th:text="${p.getDob()}"></td>-->
-            <!--            <td th:text="${p.passed}"></td>-->
-            <!--            <td th:text="${p.getGpa()}"></td>-->
-            <!--            <td>-->
-            <!--                <a class="btn btn-danger" onClick="return confirm('Are you sure you want to delete the record?')" th:href="@{delete(id=${p.getId()})}">-->
-            <!--                    Delete-->
-            <!--                </a>-->
-            <!--            </td>-->
-            <!--            <td>-->
-            <!--                <a class="btn btn-success" th:href="@{editStudents(id=${p.id})}">-->
-            <!--                    Edit</a>-->
-            <!--            </td>-->
-            <!--        </tr>-->
             </tbody>
         </table>
     </div>
 
 </div>
+    <script>
+        document.getElementById('dot').valueAsDate = new Date();
+    </script>
 </body>
 </html>
