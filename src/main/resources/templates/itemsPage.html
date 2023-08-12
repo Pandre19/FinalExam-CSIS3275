@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" >
+    <title>Final Exam</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <style>
+        .pre-scrollable {
+            height:500px;
+            overflow-y: scroll;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.getElementById('dot').valueAsDate = new Date();
+    </script>
+</head>
+<body>
+
+    <h1>Final Exam Set C</h1>
+    <h1 class="mb-4">Category Sales Summary Table</h1>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Category Code</th><th>Category Description</th><th>Total Sales</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--        <tr th:each="p:${listStudents}">-->
+            <!--            <td th:text="${p.getId()}"></td>-->
+            <!--            <td th:text="${p.getName()}"></td>-->
+            <!--            <td th:text="${p.getDob()}"></td>-->
+            <!--            <td th:text="${p.passed}"></td>-->
+            <!--            <td th:text="${p.getGpa()}"></td>-->
+            <!--            <td>-->
+            <!--                <a class="btn btn-danger" onClick="return confirm('Are you sure you want to delete the record?')" th:href="@{delete(id=${p.getId()})}">-->
+            <!--                    Delete-->
+            <!--                </a>-->
+            <!--            </td>-->
+            <!--            <td>-->
+            <!--                <a class="btn btn-success" th:href="@{editStudents(id=${p.id})}">-->
+            <!--                    Edit</a>-->
+            <!--            </td>-->
+            <!--        </tr>-->
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="container bg-primary">
+        <div class="card-body">
+            <form method="get" th:action="@{index}">
+                <div class="mb-3">
+                    <label for="recno" class="form-label">Receipt No.:</label>
+                    <input type="number" class="form-control" id="recno" name="recno" value="0">
+                </div>
+                <div class="mb-3">
+                    <label for="icode" class="form-label">Item Type:</label>
+                    <select class="form-control" id="icode">
+                        <option> select option</option>
+                        <option th:each="p:${items}" th:value="${p.getIcode() + ' : ' + p.getIdesc()}"
+                                th:text="${p.getIcode() + ' : ' + p.getIdesc()}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="qty" class="form-label">Quantity:</label>
+                    <input type="number" class="form-control" id="qty" name="qty" value="0.0">
+                </div>
+                <div class="mb-3">
+                    <label for="dot" class="form-label">Transaction Date:</label>
+                    <input type="date" class="form-control" id="dot" name="dot">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn-primary" th:href="@{/items}">Save</button>
+                </div>
+
+                <!--                <label>Key Word</label>-->
+<!--                <input type="text" name="keyword">-->
+<!--                <button type="submit" class="btn-primary">Search</button>-->
+<!--                <button type="submit" class="btn-primary" name="seeAll" value="true">See All</button>-->
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Receipt No</th><th>Item Code</th><th>Quantity</th><th>Transaction Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--        <tr th:each="p:${listStudents}">-->
+            <!--            <td th:text="${p.getId()}"></td>-->
+            <!--            <td th:text="${p.getName()}"></td>-->
+            <!--            <td th:text="${p.getDob()}"></td>-->
+            <!--            <td th:text="${p.passed}"></td>-->
+            <!--            <td th:text="${p.getGpa()}"></td>-->
+            <!--            <td>-->
+            <!--                <a class="btn btn-danger" onClick="return confirm('Are you sure you want to delete the record?')" th:href="@{delete(id=${p.getId()})}">-->
+            <!--                    Delete-->
+            <!--                </a>-->
+            <!--            </td>-->
+            <!--            <td>-->
+            <!--                <a class="btn btn-success" th:href="@{editStudents(id=${p.id})}">-->
+            <!--                    Edit</a>-->
+            <!--            </td>-->
+            <!--        </tr>-->
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
